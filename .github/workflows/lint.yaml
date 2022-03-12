@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "12.x"
-      - name: set up flutter
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: "2.10.1"
