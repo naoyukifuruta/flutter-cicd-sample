@@ -8,7 +8,7 @@ on:
       - master
 
 jobs:
-  widget_test:
+  test:
     name: flutter test
     runs-on: ubuntu-latest
     steps:
