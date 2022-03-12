@@ -1,4 +1,4 @@
-name: widget test
+name: test
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   widget_test:
-    name: flutter widget test
+    name: flutter test
     runs-on: ubuntu-latest
     steps:
       - name: set up repository
@@ -18,10 +18,15 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "12.x"
+      - name: set up flutter
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: "2.10.1"
+      - name: flutter version
+        run: flutter --version
       - name: flutter pub get
         run: flutter pub get
       - name: flutter widget test
         run: flutter test test/widget_test.dart
+      - name: flutter unit test
+        run: flutter test test/unit_test.dart
