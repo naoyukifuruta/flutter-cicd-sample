@@ -9,7 +9,7 @@ on:
 
 jobs:
   lint:
-    # name: flutter analyze
+    name: flutter analyze
     runs-on: ubuntu-latest
     steps:
       - name: set up repository
@@ -48,6 +48,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   android:
+    name: build android
     runs-on: ubuntu-latest
     needs: lint
     steps:
@@ -67,6 +68,7 @@ jobs:
         run: flutter build appbundle --debug
 
   ios:
+    name: build ios
     runs-on: macos-latest
     needs: lint
     steps:
@@ -82,7 +84,7 @@ jobs:
         run: flutter build ios --debug --no-codesign
 
   test:
-    # name: flutter test
+    name: flutter test
     needs: [android, ios]
     runs-on: ubuntu-latest
     steps:
