@@ -38,9 +38,9 @@ jobs:
 
       - name: setup ruby
         if: ${{ failure() }}
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "2.7"
 
       - name: setup danger
         if: ${{ failure() }}
