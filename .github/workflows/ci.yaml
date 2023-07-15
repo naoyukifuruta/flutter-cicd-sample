@@ -20,7 +20,7 @@ jobs:
         with:
           java-version: "12.x"
       - name: set up flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v2.3.0
         with:
           flutter-version: "3.10.6"
       - name: flutter pub get
