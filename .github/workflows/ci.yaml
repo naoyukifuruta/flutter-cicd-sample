@@ -8,6 +8,9 @@ on:
     branches:
       - master
 
+env:
+  flutter_version: "3.10.6"
+
 jobs:
   lint:
     name: flutter analyze
@@ -20,7 +23,7 @@ jobs:
       - name: set up flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.10.6"
+          flutter-version: ${{ env.flutter_version }}
           channel: "stable"
 
       - name: flutter version
@@ -62,11 +65,6 @@ jobs:
     steps:
       - name: set up repository
         uses: actions/checkout@v3
-
-      # - name: set up java
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     java-version: "11.x"
 
       - name: set up flutter
         uses: subosito/flutter-action@v2
@@ -126,20 +124,14 @@ jobs:
       - name: flutter pub get
         run: flutter pub get
 
-      # - name: flutter widget test
-      #   run: flutter test test/widget_test.dart
-
-      # - name: flutter unit test
-      #   run: flutter test test/unit_test.dart
-
       - name: flutter test
         run: flutter test --machine > test_report.log
-      
+
       - name: test report
         uses: dorny/test-reporter@v1
         if: always()
         with:
-          name: 'flutter test'
+          name: 'flutter test report'
           path: 'test_report.log'
           reporter: 'flutter-json'
           fail-on-error: 'false'
