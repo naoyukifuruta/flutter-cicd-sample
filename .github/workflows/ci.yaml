@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  flutter_version: "3.13.3"
+  flutter_version: "3.13.5"
 
 jobs:
   lint:
